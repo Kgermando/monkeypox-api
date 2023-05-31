@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: api
+    container_name: monkeypox-api
     ports:
       - "8000:3000"
     networks:
@@ -21,7 +21,7 @@ services:
   db:
     restart: always
     image: postgres:latest
-    container_name: db
+    container_name: monkeypox-db
     command: ["-c", "shared_buffers=256MB", "-c", "max_connections=500"]
     volumes:
       - postgres:/var/lib/postgresql/data
@@ -39,7 +39,7 @@ services:
 
   adminer:
     image: adminer
-    container_name: adminer
+    container_name: monkeypox-adminer
     restart: always
     ports:
       - 8082:8080
