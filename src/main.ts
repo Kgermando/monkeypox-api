@@ -9,10 +9,10 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
-  // app.enableCors({
-  //   origin: 'http://localhost:4200',
-  //   credentials: true
-  // });
+  app.enableCors({
+    origin: 'http://localhost:4200',
+    credentials: true
+  });
   const configService = app.get(ConfigService);
   const port = configService.get('port');
   await app.listen(port);
