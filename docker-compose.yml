@@ -46,19 +46,6 @@ services:
     networks:
       - app-network
 
-  # nginx:
-  #   image: nginx
-  #   container_name: nginx
-  #   depends_on:
-  #     - nest
-  #   environment:
-  #     - NGINX_SERVER_NAME=localhost
-  #     - NEST_HOST=nest
-  #     - NEST_PORT=3000
-  #     - NGINX_MAX_BODY=100M
-  #   ports:
-  #     - 80:80
-
 volumes:
   postgres:
     driver: local
