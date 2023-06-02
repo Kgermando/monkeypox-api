@@ -23,7 +23,6 @@ export class AuthController {
             throw new BadRequestException("Mot de passe de correspond pas.");
         }
         const hashed = await bcrypt.hash(body.password, 12);
-
         return this.userService.create({
             photo: body.photo,
             nom: body.nom,
@@ -43,9 +42,8 @@ export class AuthController {
             password: hashed,
             signature: body.signature,
             created: body.created,
-            update_created: body.update_created, 
-        }
-        );
+            update_created: body.update_created,
+        });
     }
 
     @Post('login')
