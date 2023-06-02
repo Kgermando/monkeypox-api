@@ -24,6 +24,7 @@ export class AuthController {
         }
         const hashed = await bcrypt.hash(body.password, 12);
         return this.userService.create({
+            structure: body.structure,
             photo: body.photo,
             nom: body.nom,
             postnom: body.postnom,
