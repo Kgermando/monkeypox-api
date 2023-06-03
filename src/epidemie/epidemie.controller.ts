@@ -1,8 +1,10 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { EpidemieService } from './epidemie.service';
 import { EpidemieCreateDto } from './moidels/epidemie-create.dto';
 import { EpidemieUpdateDto } from './moidels/epidemie-update.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('epidemies')
 export class EpidemieController {
     constructor(

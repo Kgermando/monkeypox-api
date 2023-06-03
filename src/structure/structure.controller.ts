@@ -1,8 +1,10 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { StructureService } from './structure.service';
 import { StructureCreateDto } from './models/structure-create.dto';
 import { StructureUpdateDto } from './models/structure-update.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('structures')
 export class StructureController {
     constructor(

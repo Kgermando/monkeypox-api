@@ -1,8 +1,10 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { CampaignService } from './campaign.service';
 import { CampaignCreateDto } from './models/campaign-create.dto';
 import { CampaignUpdateDto } from './models/campaign-update.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('campaigns')
 export class CampaignController {
     constructor(
