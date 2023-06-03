@@ -4,7 +4,7 @@ import { StructureCreateDto } from './models/structure-create.dto';
 import { StructureUpdateDto } from './models/structure-update.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('structures')
 export class StructureController {
     constructor(

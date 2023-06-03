@@ -4,7 +4,7 @@ import { PatientCreateDto } from './models/pateint-create.dto';
 import { PatientUpdateDto } from './models/patient-update.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('patients')
 export class PatientController {
     constructor(

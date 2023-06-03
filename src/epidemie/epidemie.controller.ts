@@ -4,7 +4,7 @@ import { EpidemieCreateDto } from './moidels/epidemie-create.dto';
 import { EpidemieUpdateDto } from './moidels/epidemie-update.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('epidemies')
 export class EpidemieController {
     constructor(

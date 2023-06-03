@@ -4,7 +4,7 @@ import { CampaignCreateDto } from './models/campaign-create.dto';
 import { CampaignUpdateDto } from './models/campaign-update.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('campaigns')
 export class CampaignController {
     constructor(
