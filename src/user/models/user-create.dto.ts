@@ -51,8 +51,8 @@ export class UserCreateDto {
     @IsNotEmpty()
     matricule: string;
 
-    @IsNotEmpty()
-    password: string;
+    // @IsNotEmpty()
+    // password: string;
 
     @IsNotEmpty()
     signature: string; // celui qui fait le document

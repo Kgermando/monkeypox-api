@@ -29,7 +29,6 @@ export class UserController {
     @Post()
     async create(@Body() body: UserCreateDto): Promise<User> {
       const password = await bcrypt.hash('1234', 12);
- 
 
       return this.userService.create({ 
         body, 
