@@ -29,12 +29,11 @@ export class UserController {
     @Post()
     async create(@Body() body: UserCreateDto): Promise<User> {
       const password = await bcrypt.hash('1234', 12);
-
-      return this.userService.create({ 
-        body, 
-        password, 
+      return this.userService.create({
+        ...body,
+        password
       });
-  }
+    }
 
   @Get(':id')
   async get(@Param('id') id: number) {
