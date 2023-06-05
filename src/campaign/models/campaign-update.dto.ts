@@ -8,7 +8,7 @@ export class CampaignUpdateDto {
 
     aire_sante?: string;
 
-    nbre_agent?: string;
+    nbre_agent?: number;
 
     autres?: string;
  

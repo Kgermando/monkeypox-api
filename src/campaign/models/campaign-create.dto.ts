@@ -14,7 +14,7 @@ export class CampaignCreateDto {
     aire_sante: string;
 
     @IsNotEmpty()
-    nbre_agent: string;
+    nbre_agent: number;
 
     @IsNotEmpty()
     autres: string;

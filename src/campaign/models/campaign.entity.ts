@@ -19,7 +19,7 @@ export class Campaign {
     aire_sante: string;
 
     @Column()
-    nbre_agent: string;
+    nbre_agent: number;
 
     @Column()
     autres: string;
