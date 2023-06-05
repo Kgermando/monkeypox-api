@@ -14,10 +14,7 @@ export class CampaignCreateDto {
     aire_sante: string;
 
     @IsNotEmpty()
-    nbre_agent: number;
-
-    @IsNotEmpty()
-    autres: string;
+    nbre_agent: number; 
  
     @IsNotEmpty()
     signature: string; // celui qui fait le document

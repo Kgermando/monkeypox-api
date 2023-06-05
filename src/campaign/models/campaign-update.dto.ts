@@ -8,9 +8,7 @@ export class CampaignUpdateDto {
 
     aire_sante?: string;
 
-    nbre_agent?: number;
-
-    autres?: string;
+    nbre_agent?: number; 
  
     signature?: string; // celui qui fait le document
 

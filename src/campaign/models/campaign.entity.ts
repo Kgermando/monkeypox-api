@@ -20,9 +20,6 @@ export class Campaign {
 
     @Column()
     nbre_agent: number;
-
-    @Column()
-    autres: string;
  
     @Column()
     signature: string; // celui qui fait le document
