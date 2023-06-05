@@ -8,16 +8,19 @@ export class EpidemieCreateDto {
     province: string;
 
     @IsNotEmpty()
+    zone_sante: string;
+
+    @IsNotEmpty()
+    num_epi: string;
+
+    @IsNotEmpty()
     semaine_epi: number;
 
     @IsNotEmpty()
     date_notification: Date;
 
     @IsNotEmpty()
-    patient_id: number;
-
-    @IsNotEmpty()
-    num_epi: string;
+    patient_id: number; 
 
     @IsNotEmpty()
     fievre: boolean;

@@ -12,16 +12,19 @@ export class Epidemie {
     province: string;
 
     @Column()
+    zone_sante: string;
+
+    @Column()
+    num_epi: string; // Numero epidemiologique
+
+    @Column()
     semaine_epi: number;
 
     @Column()
     date_notification: Date;
 
     @Column()
-    patient_id: number;
-
-    @Column()
-    num_epi: string; // Numero epidemiologique
+    patient_id: number; 
 
     @Column()
     fievre: boolean;

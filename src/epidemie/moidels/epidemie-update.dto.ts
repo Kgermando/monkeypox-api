@@ -4,15 +4,17 @@ export class EpidemieUpdateDto {
     pays?: string;
  
     province?: string;
+
+    zone_sante?: string;
+
+    num_epi?: string;
  
     semaine_epi?: number; 
 
     date_notification?: Date; 
    
-    patient_id?: number;
-
-    num_epi?: string;
-   
+    patient_id?: number; 
+    
     fievre?: boolean;
  
     eruption_cutanee?: boolean;
