@@ -6,9 +6,9 @@ export class CampaignUpdateDto {
 
     date_fin?: Date;
 
-    aire_sante?: number;
+    aire_sante?: string;
 
-    nbre_agent?: number;
+    nbre_agent?: string;
 
     autres?: string;
  

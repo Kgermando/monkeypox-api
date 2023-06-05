@@ -11,7 +11,7 @@ export class PatientUpdateDto {
    
     age_mois?: number;
    
-    fourchette_age?: number;
+    fourchette_age?: string;
 
     lieu_residence?: string;  // Village ou quartier
    

@@ -11,10 +11,10 @@ export class CampaignCreateDto {
     date_fin: Date;
 
     @IsNotEmpty()
-    aire_sante: number;
+    aire_sante: string;
 
     @IsNotEmpty()
-    nbre_agent: number;
+    nbre_agent: string;
 
     @IsNotEmpty()
     autres: string;

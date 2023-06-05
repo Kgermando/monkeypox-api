@@ -23,7 +23,7 @@ export class PatientCreateDto {
     age_mois: number;
 
     @IsNotEmpty()
-    fourchette_age: number;
+    fourchette_age: string;
 
     @IsNotEmpty()
     lieu_residence: string;  // Village ou quartier

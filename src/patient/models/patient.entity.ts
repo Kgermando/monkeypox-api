@@ -27,7 +27,7 @@ export class Patient {
     age_mois: number;
 
     @Column()
-    fourchette_age: number;
+    fourchette_age: string;
 
     @Column()
     lieu_residence: string;  // Village ou quartier

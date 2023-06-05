@@ -16,10 +16,10 @@ export class Campaign {
     date_fin: Date;
 
     @Column()
-    aire_sante: number;
+    aire_sante: string;
 
     @Column()
-    nbre_agent: number;
+    nbre_agent: string;
 
     @Column()
     autres: string;
