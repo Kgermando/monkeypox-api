@@ -7,7 +7,7 @@ export class EpidemieUpdateDto {
 
     zone_sante?: string;
 
-    num_epi?: string;
+    num_epi?: number;
  
     semaine_epi?: number; 
 
