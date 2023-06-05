@@ -17,6 +17,9 @@ export class EpidemieCreateDto {
     patient_id: number;
 
     @IsNotEmpty()
+    num_epi: string;
+
+    @IsNotEmpty()
     fievre: boolean;
 
     @IsNotEmpty()

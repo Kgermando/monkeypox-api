@@ -21,6 +21,9 @@ export class Epidemie {
     patient_id: number;
 
     @Column()
+    num_epi: string; // Numero epidemiologique
+
+    @Column()
     fievre: boolean;
 
     @Column()

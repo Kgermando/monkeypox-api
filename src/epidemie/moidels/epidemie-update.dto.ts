@@ -9,7 +9,9 @@ export class EpidemieUpdateDto {
 
     date_notification?: Date; 
    
-    patient_id?: number; 
+    patient_id?: number;
+
+    num_epi?: string;
    
     fievre?: boolean;
  
