@@ -39,6 +39,9 @@ export class PatientCreateDto {
 
     @IsNotEmpty()
     telephone: string;
+
+    @IsNotEmpty()
+    province: string;
  
     @IsNotEmpty()
     signature: string; // celui qui fait le document

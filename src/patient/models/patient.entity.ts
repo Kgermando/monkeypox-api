@@ -43,6 +43,9 @@ export class Patient {
 
     @Column()
     telephone: string;
+
+    @Column()
+    province: string;
  
     @Column()
     signature: string; // celui qui fait le document

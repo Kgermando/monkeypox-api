@@ -22,6 +22,8 @@ export class PatientUpdateDto {
     email?: string;
 
     telephone?: string;
+
+    province?: string;
    
     signature?: string; // celui qui fait le document
 
