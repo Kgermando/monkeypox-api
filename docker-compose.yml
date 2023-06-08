@@ -11,7 +11,7 @@ services:
     networks:
       - app-network
     volumes:
-      - ./wm-rh-api/:/app
+      - ./monkeypox-api/:/app
       - /app/node_modules
     depends_on:
       - db
