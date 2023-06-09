@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     container_name: monkeypox-api
     ports:
-      - "80:3000"
+      - "8000:3000"
     networks:
       - app-network
     volumes:
