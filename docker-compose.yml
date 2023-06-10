@@ -85,7 +85,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/server/monkeypox-api/dist/
+      device: /home/server/monkeypox/dist/
       o: bind 
 
 networks:
