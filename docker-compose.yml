@@ -1,24 +1,6 @@
-version: '3.9'
+version: '3'
 
 services:
-  api:
-    restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: monkeypox-api
-    ports:
-      - "8000:3000"
-    networks:
-      - app-network
-    volumes:
-      - ./monkeypox-api/:/app
-      - /app/node_modules
-    depends_on:
-      - db
-    env_file:
-      - .env
-
   db:
     restart: always
     image: postgres:latest
@@ -38,17 +20,52 @@ services:
     networks:
       - app-network
 
-  proxy:
+  monkeypox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: monkeypox
+    image: monkeypox
     restart: unless-stopped
-    image: nginx
-    ports:
-      - 80:${NGINX_PORT}
-    depends_on:
-      - webapp
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    # ports:
+    #   - "8000:3000"
     networks:
       - app-network
+    volumes:
+      - ./monkeypox-api/:/app
+      - /app/node_modules
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+
+  webserver:
+    image: nginx:mainline-alpine
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - web-root:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+    depends_on:
+      - monkeypox
+    networks:
+      - app-network
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - webserver
+    command: certonly --webroot --webroot-path=/var/www/html --email katakugermain@gmail.com --agree-tos --no-eff-email --staging -d mpox.eventdrc.tech
 
   adminer:
     image: adminer
@@ -62,6 +79,14 @@ services:
 volumes:
   postgres:
     driver: local
+  certbot-etc:
+  certbot-var:
+  web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/server/monkeypox-api/dist/
+      o: bind 
 
 networks:
   app-network:
