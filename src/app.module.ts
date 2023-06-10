@@ -41,7 +41,6 @@ import { StructureModule } from './structure/structure.module';
     CampaignModule,
     ZoneSanteModule,
     StructureModule,
-    
   ], 
 })
 export class AppModule {}
