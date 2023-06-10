@@ -31,9 +31,9 @@ services:
     #   - "8000:3000"
     networks:
       - app-network
-    volumes:
-      - ./monkeypox/:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./monkeypox/:/app
+    #   - /app/node_modules
     depends_on:
       - db
     env_file:
