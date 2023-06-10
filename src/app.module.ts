@@ -25,14 +25,10 @@ import { StructureModule } from './structure/structure.module';
     TypeOrmModule.forRootAsync({
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get<string>('database.host'),
-        port: configService.get<number>('database.port'),
-        username: configService.get<string>('database.user'),
-        password: configService.get<string>('database.password'),
-        database: configService.get<string>('database.db'), 
+        url: configService.get<string>('database.url'),
         autoLoadEntities: true,
         synchronize: true,
-      }),
+      }), 
       inject: [ConfigService],
     }),
     CommonModule,
@@ -49,3 +45,15 @@ import { StructureModule } from './structure/structure.module';
   ], 
 })
 export class AppModule {}
+
+
+// {
+//   type: 'postgres',
+//   host: configService.get<string>('database.host'),
+//   port: configService.get<number>('database.port'),
+//   username: configService.get<string>('database.user'),
+//   password: configService.get<string>('database.password'),
+//   database: configService.get<string>('database.db'), 
+//   autoLoadEntities: true,
+//   synchronize: true,
+// }
