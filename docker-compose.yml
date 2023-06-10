@@ -39,7 +39,6 @@ services:
     env_file:
       - .env
 
-
   webserver:
     image: nginx:mainline-alpine
     container_name: webserver
@@ -85,7 +84,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/server/monkeypox/views/
+      device: /home/server/monkeypox-api/dist/
       o: bind 
 
 networks:
