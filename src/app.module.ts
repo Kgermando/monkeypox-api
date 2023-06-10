@@ -29,7 +29,7 @@ import { StructureModule } from './structure/structure.module';
         port: configService.get<number>('database.port'),
         username: configService.get<string>('database.user'),
         password: configService.get<string>('database.password'),
-        database: configService.get<string>('database.db'),
+        database: configService.get<string>('database.db'), 
         autoLoadEntities: true,
         synchronize: true,
       }),
