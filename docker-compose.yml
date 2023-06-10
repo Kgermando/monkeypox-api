@@ -20,12 +20,12 @@ services:
     networks:
       - app-network
 
-  monkeypox:
+  monkeypox-api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: monkeypox
-    image: monkeypox
+    container_name: monkeypox-api
+    image: monkeypox-api
     restart: unless-stopped
     # ports:
     #   - "8000:3000"
@@ -51,7 +51,7 @@ services:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
     depends_on:
-      - monkeypox
+      - monkeypox-api
     networks:
       - app-network
 
