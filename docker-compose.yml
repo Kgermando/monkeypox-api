@@ -27,8 +27,8 @@ services:
     container_name: monkeypox-api
     image: monkeypox-api
     restart: unless-stopped
-    # ports:
-    #   - "8000:3000" 
+    ports:
+      - "8080:8080" 
     networks:
       - app-network
     volumes:
