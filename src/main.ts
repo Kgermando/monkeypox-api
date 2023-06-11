@@ -10,7 +10,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
   app.enableCors({
-    origin: 'https://monkeypox.eventdrc.tech',
+    origin: 'https://opca-monkeypox.web.app',
     credentials: true
   });
   const configService = app.get(ConfigService);
