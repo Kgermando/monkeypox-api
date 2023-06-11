@@ -1,6 +1,24 @@
 version: '3.9'
 
 services:
+  api:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: monkeypox-api
+    ports:
+      - "8000:3000"
+    networks:
+      - app-network
+    volumes:
+      - ./monkeypox-api/:/app
+      - /app/node_modules
+    depends_on:
+      - db
+    env_file:
+      - .env
+
   db:
     restart: always
     image: postgres:latest
@@ -20,55 +38,6 @@ services:
     networks:
       - app-network
 
-  monkeypox-api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: monkeypox-api
-    image: monkeypox-api
-    restart: unless-stopped
-    # ports:
-    #   - "8000:3000"
-    volumes:
-      - ./app:/usr/src/app
-      - /usr/src/app/node_modules
-    networks:
-      - app-network
-    # volumes:
-    #   - ./monkeypox-api/:/app
-    #   - /app/node_modules
-    depends_on:
-      - db
-    env_file:
-      - .env
-
-  webserver:
-    image: nginx:mainline-alpine
-    container_name: webserver
-    restart: unless-stopped
-    ports:
-      - "80:80"
-    volumes:
-      - web-root:/var/www/html
-      - ./nginx-conf:/etc/nginx/conf.d
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-    depends_on:
-      - monkeypox-api
-    networks:
-      - app-network
-
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/www/html
-    depends_on:
-      - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email katakugermain@gmail.com --agree-tos --no-eff-email --staging -d mpox.eventdrc.tech
-
   adminer:
     image: adminer
     container_name: monkeypox-adminer
@@ -81,15 +50,8 @@ services:
 volumes:
   postgres:
     driver: local
-  certbot-etc:
-  certbot-var:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/server/monkeypox-api/dist/
-      o: bind 
 
 networks:
   app-network:
     driver: bridge
+
