@@ -28,15 +28,12 @@ services:
     image: monkeypox-api
     restart: unless-stopped
     # ports:
-    #   - "8000:3000"
-    volumes:
-      - ./app:/usr/src/app
-      - /usr/src/app/node_modules
+    #   - "8000:3000" 
     networks:
       - app-network
-    # volumes:
-    #   - ./monkeypox-api/:/app
-    #   - /app/node_modules
+    volumes:
+      - ./monkeypox-api/:/app
+      - /app/node_modules
     depends_on:
       - db
     env_file:
