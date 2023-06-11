@@ -21,7 +21,6 @@ import { StructureModule } from './structure/structure.module';
       load: [configuration],
       expandVariables: true,
     }),
-
     TypeOrmModule.forRootAsync({
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
@@ -48,12 +47,3 @@ import { StructureModule } from './structure/structure.module';
   ], 
 })
 export class AppModule {}
-
-
-
-// {
-//   type: 'postgres',
-//   url: configService.get<string>('database.url'),
-//   autoLoadEntities: true,
-//   synchronize: true,
-// }
