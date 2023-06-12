@@ -69,7 +69,7 @@ export class AuthController {
 
         const jwt = await this.jwtService.signAsync({id: user.id});
         
-        response.cookie('jwt', jwt, {httpOnly: true, domain: "https://opca-monkeypox.web.app"});
+        response.cookie('jwt', jwt, {httpOnly: true});
         // response.cookie('jwt', jwt, {
         //     httpOnly: true,
         //     sameSite: "none",
