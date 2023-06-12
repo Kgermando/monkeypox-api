@@ -10,7 +10,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
   app.enableCors({
-    origin: 'https://opca-monkeypox.web.app',
+    origin: 'https://opca-monkeypox.web.app/',
     allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
     credentials: true
   });
