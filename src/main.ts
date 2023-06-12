@@ -11,6 +11,7 @@ async function bootstrap() {
   app.use(cookieParser());
   app.enableCors({
     origin: 'https://opca-monkeypox.web.app',
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
     credentials: true
   });
   const configService = app.get(ConfigService);
