@@ -73,7 +73,7 @@ export class AuthController {
         response.cookie('jwt', jwt, {
             httpOnly: true,
             sameSite: "none",
-            secure: true,
+            secure: false,
           });
         return user;  
     }
