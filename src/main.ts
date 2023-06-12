@@ -9,10 +9,10 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
-  // app.enableCors({
-  //   origin: 'https://opca-monkeypox.web.app',
-  //   credentials: true
-  // });
+  app.enableCors({
+    origin: 'https://opca-monkeypox.web.app',
+    credentials: true
+  });
   const configService = app.get(ConfigService);
   const port = configService.get('port');
   await app.listen(port);

@@ -72,6 +72,7 @@ export class AuthController {
         // response.cookie('jwt', jwt, {httpOnly: true});
         response.cookie('jwt', jwt, {
             httpOnly: true,
+            domain: 'https://opca-monkeypox.web.app',
             sameSite: "none",
             secure: true,
           });
