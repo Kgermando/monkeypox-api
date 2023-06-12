@@ -69,12 +69,12 @@ export class AuthController {
 
         const jwt = await this.jwtService.signAsync({id: user.id});
         
-        response.cookie('jwt', jwt, {httpOnly: true});
-        // response.cookie('jwt', jwt, {
-        //     httpOnly: true,
-        //     sameSite: "none",
-        //     secure: false,
-        //   });
+        // response.cookie('jwt', jwt, {httpOnly: true});
+        response.cookie('jwt', jwt, {
+            httpOnly: true,
+            sameSite: "strict",
+            // secure: false,
+          });
         return user;  
     }
 
