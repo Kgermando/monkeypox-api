@@ -67,7 +67,7 @@ export class AuthController {
             throw new BadRequestException("Ce compte n'est pas actif! ");
         }
 
-        const idUser = user.id;
+        // const idUser = user.id;
 
         const jwt = await this.jwtService.signAsync({id: user.id});
  
@@ -93,9 +93,9 @@ export class AuthController {
     @UseGuards(AuthGuard)
     @Post('logout')
     async logout(
-        // @Res() response: Response 
+        @Res() response: Response 
     ) {
-        // response.clearCookie('jwt');
+        response.clearCookie('jwt');
 
         return {
             message: 'Success!'
