@@ -71,8 +71,9 @@ export class AuthController {
         
         // response.cookie('jwt', jwt, {httpOnly: true});
 
+        const token = jwt;
 
-        return user;
+        return token;
     }
 
 
