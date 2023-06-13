@@ -2,8 +2,8 @@ import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Get,
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './models/register.dto';
-// import { JwtService } from '@nestjs/jwt';
-// import { Request, Response } from 'express'; 
+import { JwtService } from '@nestjs/jwt';
+import { Request, Response } from 'express'; 
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 
@@ -13,7 +13,7 @@ export class AuthController {
 
     constructor(
         private userService: UserService,
-        // private jwtService: JwtService,
+        private jwtService: JwtService,
         private authService: AuthService,
         ) { }
 
@@ -51,7 +51,7 @@ export class AuthController {
     async login(
         @Body('matricule') matricule: string,
         @Body('password') password: string,
-        // @Res({passthrough: true}) response: Response
+        @Res({passthrough: true}) response: Response
     ) {
         const user = await this.userService.findOne({where: {matricule}}); 
 
@@ -69,15 +69,10 @@ export class AuthController {
 
         const idUser = user.id;
 
-        // const jwt = await this.jwtService.signAsync({id: user.id});
-        
-        // response.cookie('jwt', jwt, {httpOnly: true, secure: false});
-        // response.cookie('jwt', jwt, {
-        //     httpOnly: true,
-        //     domain: 'opca-monkeypox.web.app',
-        //     sameSite: "none",
-        //     secure: true,
-        //   });
+        const jwt = await this.jwtService.signAsync({id: user.id});
+ 
+        response.cookie('jwt', jwt, {httpOnly: true});
+
         return idUser;
     }
 
