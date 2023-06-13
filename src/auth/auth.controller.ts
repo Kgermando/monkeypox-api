@@ -67,6 +67,8 @@ export class AuthController {
             throw new BadRequestException("Ce compte n'est pas actif! ");
         } 
 
+        const idUser = user.id;
+
         // const jwt = await this.jwtService.signAsync({id: user.id});
         
         // response.cookie('jwt', jwt, {httpOnly: true, secure: false});
@@ -76,7 +78,7 @@ export class AuthController {
         //     sameSite: "none",
         //     secure: true,
         //   });
-        return user.id; 
+        return idUser; 
     }
 
 
