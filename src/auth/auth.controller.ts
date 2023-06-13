@@ -1,4 +1,4 @@
-import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Get, NotFoundException, Post, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
+import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Get, NotFoundException, Param, Post, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './models/register.dto';
@@ -76,12 +76,19 @@ export class AuthController {
     }
 
 
-    @UseGuards(AuthGuard)
-    @Get('user')
-    async user(@Req() request: Request) {
-        const id = await this.authService.userId(request);
+    @Get(':jwt')
+    async user(@Param('jwt') jwt: string) {
+        const id = await this.authService.userId(jwt);
         return this.userService.findOne({where: {id}});
     }
+ 
+
+    // @UseGuards(AuthGuard)
+    // @Get('user')
+    // async user(@Req() request: Request) {
+    //     const id = await this.authService.userId(request);
+    //     return this.userService.findOne({where: {id}});
+    // }
 
     @UseGuards(AuthGuard)
     @Post('logout')
