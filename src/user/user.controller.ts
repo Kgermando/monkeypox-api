@@ -41,11 +41,11 @@ export class UserController {
   }
 
 
-  @Put('info')
+  @Put('/info/:jwt')
   async updateInfo(
-    @Req() request: Request,
+    @Param('jwt') jwt: string,
     @Body() body: UserUpdateDto ) {
-    const id = await this.authService.userId(request);
+    const id = await this.authService.userId(jwt);
 
     await this.userService.update(id, body); 
     
@@ -53,16 +53,16 @@ export class UserController {
   }
 
 
-  @Put('password')  
+  @Put('/password/:jwt')  
   async updatePassword(
-    @Req() request: Request,
+    @Param('jwt') jwt: string,
     @Body('password') password: string,
     @Body('password_confirm') password_confirm: string,
   ) {
     if(password !== password_confirm) {
       throw new BadRequestException("Mot de passe de correspond pas.");
   }
-    const id = await this.authService.userId(request);
+    const id = await this.authService.userId(jwt);
 
     const hashed = await bcrypt.hash(password, 12);
 
