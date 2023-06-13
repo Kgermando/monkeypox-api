@@ -26,7 +26,7 @@ services:
       dockerfile: Dockerfile
     container_name: monkeypox-api
     image: monkeypox-api
-    # restart: unless-stopped
+    restart: unless-stopped
     ports:
       - "8080:8080" 
     networks:
