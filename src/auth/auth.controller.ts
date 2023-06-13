@@ -1,4 +1,4 @@
-import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Get, NotFoundException, Param, Post, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
+import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Get, NotFoundException, Post, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './models/register.dto';
@@ -8,7 +8,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 
 @UseInterceptors(ClassSerializerInterceptor)
-@Controller('auth')
+@Controller()
 export class AuthController {
 
     constructor(
@@ -57,7 +57,7 @@ export class AuthController {
 
         if(!user) {
             throw new NotFoundException('Utilisateur non trouvé!');
-        }
+        } 
 
         if(!await bcrypt.compare(password, user.password)) {
             throw new BadRequestException('Invalid credentiels.');
@@ -65,30 +65,23 @@ export class AuthController {
 
         if(user.statut_personnel == false) {
             throw new BadRequestException("Ce compte n'est pas actif! ");
-        }
-
-        // const idUser = user.id;
+        } 
 
         const jwt = await this.jwtService.signAsync({id: user.id});
- 
+        
         response.cookie('jwt', jwt, {httpOnly: true});
 
-        return jwt;
+
+        return jwt;  
     }
 
 
-    // @UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Get('user')
     async user(@Req() request: Request) {
         const id = await this.authService.userId(request);
         return this.userService.findOne({where: {id}});
     }
-
-    // @Get(':id')
-    // async get(@Param('id') id: number) {
-    //   return this.userService.findOne({where: {id}});
-    // }
-  
 
     @UseGuards(AuthGuard)
     @Post('logout')
