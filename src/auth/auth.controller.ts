@@ -8,7 +8,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 
 @UseInterceptors(ClassSerializerInterceptor)
-@Controller()
+@Controller('auth')
 export class AuthController {
 
     constructor(
