@@ -11,7 +11,7 @@ async function bootstrap() {
   // app.use(cookieParser());
   app.enableCors({
     origin: 'https://opca-monkeypox.web.app',
-    credentials: true
+    // credentials: true
   });
   const configService = app.get(ConfigService);
   const port = configService.get('port');
