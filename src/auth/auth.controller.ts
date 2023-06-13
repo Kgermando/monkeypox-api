@@ -51,7 +51,7 @@ export class AuthController {
     async login(
         @Body('matricule') matricule: string,
         @Body('password') password: string,
-        @Res({passthrough: true}) response: Response
+        // @Res({passthrough: true}) response: Response
     ) {
         const user = await this.userService.findOne({where: {matricule}}); 
 
@@ -69,10 +69,10 @@ export class AuthController {
 
         const jwt = await this.jwtService.signAsync({id: user.id});
         
-        response.cookie('jwt', jwt, {httpOnly: true});
+        // response.cookie('jwt', jwt, {httpOnly: true});
 
 
-        return user;  
+        return jwt;
     }
 
 
@@ -86,9 +86,9 @@ export class AuthController {
     @UseGuards(AuthGuard)
     @Post('logout')
     async logout(
-        @Res() response: Response 
+        // @Res() response: Response 
     ) {
-        response.clearCookie('jwt');
+        // response.clearCookie('jwt');
 
         return {
             message: 'Success!'
