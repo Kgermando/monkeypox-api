@@ -51,7 +51,7 @@ export class AuthController {
     async login(
         @Body('matricule') matricule: string,
         @Body('password') password: string,
-        // @Res({passthrough: true}) response: Response
+        @Res({passthrough: true}) response: Response
     ) {
         const user = await this.userService.findOne({where: {matricule}}); 
 
@@ -67,9 +67,9 @@ export class AuthController {
             throw new BadRequestException("Ce compte n'est pas actif! ");
         } 
 
-        // const jwt = await this.jwtService.signAsync({id: user.id});
+        const jwt = await this.jwtService.signAsync({id: user.id});
         
-        // response.cookie('jwt', jwt, {httpOnly: true, secure: false});
+        response.cookie('jwt', jwt, {httpOnly: true, secure: false});
         // response.cookie('jwt', jwt, {
         //     httpOnly: true,
         //     domain: 'opca-monkeypox.web.app',
