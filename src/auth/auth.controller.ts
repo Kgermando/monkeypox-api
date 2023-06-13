@@ -2,8 +2,8 @@ import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Get,
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './models/register.dto';
-import { JwtService } from '@nestjs/jwt';
-import { Request, Response } from 'express'; 
+// import { JwtService } from '@nestjs/jwt';
+// import { Request, Response } from 'express'; 
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 
@@ -13,7 +13,7 @@ export class AuthController {
 
     constructor(
         private userService: UserService,
-        private jwtService: JwtService,
+        // private jwtService: JwtService,
         private authService: AuthService,
         ) { }
 
@@ -57,7 +57,7 @@ export class AuthController {
 
         if(!user) {
             throw new NotFoundException('Utilisateur non trouvé!');
-        } 
+        }
 
         if(!await bcrypt.compare(password, user.password)) {
             throw new BadRequestException('Invalid credentiels.');
@@ -78,7 +78,7 @@ export class AuthController {
         //     sameSite: "none",
         //     secure: true,
         //   });
-        return idUser; 
+        return idUser;
     }
 
 
@@ -98,9 +98,9 @@ export class AuthController {
     @UseGuards(AuthGuard)
     @Post('logout')
     async logout(
-        @Res() response: Response 
+        // @Res() response: Response 
     ) {
-        response.clearCookie('jwt');
+        // response.clearCookie('jwt');
 
         return {
             message: 'Success!'
