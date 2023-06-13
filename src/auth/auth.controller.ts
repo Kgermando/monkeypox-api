@@ -65,7 +65,7 @@ export class AuthController {
 
         if(user.statut_personnel == false) {
             throw new BadRequestException("Ce compte n'est pas actif! ");
-        } 
+        }
 
         const idUser = user.id;
 
