@@ -73,21 +73,21 @@ export class AuthController {
  
         response.cookie('jwt', jwt, {httpOnly: true});
 
-        return idUser;
+        return jwt;
     }
 
 
     // @UseGuards(AuthGuard)
-    // @Get('user')
-    // async user(@Req() request: Request) {
-    //     const id = await this.authService.userId(request);
-    //     return this.userService.findOne({where: {id}});
-    // }
-
-    @Get(':id')
-    async get(@Param('id') id: number) {
-      return this.userService.findOne({where: {id}});
+    @Get('user')
+    async user(@Req() request: Request) {
+        const id = await this.authService.userId(request);
+        return this.userService.findOne({where: {id}});
     }
+
+    // @Get(':id')
+    // async get(@Param('id') id: number) {
+    //   return this.userService.findOne({where: {id}});
+    // }
   
 
     @UseGuards(AuthGuard)
