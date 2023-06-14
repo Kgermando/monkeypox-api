@@ -71,15 +71,17 @@ export class AuthController {
         
         // response.cookie('jwt', jwt, {httpOnly: true});
 
-        const token = {"token": jwt};
+        // const token = {"token": jwt};
 
-        return token;
+        const userId = user.id;
+
+        return userId;
     }
 
 
-    @Get(':jwt')
-    async user(@Param('jwt') jwt: string) {
-        const id = await this.authService.userId(jwt);
+    @Get(':id')
+    async user(@Param('id') id: number) {
+        // const id = await this.authService.userId(jwt);
         return this.userService.findOne({where: {id}});
     }
  

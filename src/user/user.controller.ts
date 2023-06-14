@@ -15,7 +15,7 @@ export class UserController {
 
   constructor(
     private userService: UserService,
-    private authService: AuthService,
+    // private authService: AuthService,
   ) {}
 
 
@@ -41,11 +41,11 @@ export class UserController {
   }
 
 
-  @Put('/info/:jwt')
+  @Put('/info/:id')
   async updateInfo(
-    @Param('jwt') jwt: string,
+    @Param('id') id: number,
     @Body() body: UserUpdateDto ) {
-    const id = await this.authService.userId(jwt);
+    // const id = await this.authService.userId(jwt);
 
     await this.userService.update(id, body); 
     
@@ -53,16 +53,16 @@ export class UserController {
   }
 
 
-  @Put('/password/:jwt')  
+  @Put('/password/:id')  
   async updatePassword(
-    @Param('jwt') jwt: string,
+    @Param('id') id: number,
     @Body('password') password: string,
     @Body('password_confirm') password_confirm: string,
   ) {
     if(password !== password_confirm) {
       throw new BadRequestException("Mot de passe de correspond pas.");
   }
-    const id = await this.authService.userId(jwt);
+    // const id = await this.authService.userId(jwt);
 
     const hashed = await bcrypt.hash(password, 12);
 
