@@ -12,9 +12,12 @@ export class PatientController {
     ) {}
 
     @Get()
-    async all(@Query('page') page = 1) {
-        return this.patientService.paginate(page);
+    async all() {
+        return this.patientService.all();
     }
+    // async all(@Query('page') page = 1) {
+    //     return this.patientService.paginate(page);
+    // }
 
     @Post()
     async create(

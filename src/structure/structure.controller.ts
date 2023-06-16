@@ -12,9 +12,12 @@ export class StructureController {
     ) {}
 
     @Get()
-    async all(@Query('page') page = 1) {
-        return this.structureService.paginate(page);
+    async all() {
+        return this.structureService.all();
     }
+    // async all(@Query('page') page = 1) {
+    //     return this.structureService.paginate(page);
+    // }
 
     @Post()
     async create(

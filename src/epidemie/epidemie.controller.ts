@@ -12,9 +12,12 @@ export class EpidemieController {
     ) {}
 
     @Get()
-    async all(@Query('page') page = 1) {
-        return this.epidemieService.paginate(page);
+    async all() {
+        return this.epidemieService.all();
     }
+    // async all(@Query('page') page = 1) {
+    //     return this.epidemieService.paginate(page);
+    // }
 
     @Post()
     async create(

@@ -79,6 +79,9 @@ export class Epidemie {
 
     @Column()
     campaign: string;
+
+    @Column({default: 'Monkeypox'})
+    epidemie: string;
  
     @Column()
     signature: string; // celui qui fait le document

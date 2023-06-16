@@ -12,9 +12,12 @@ export class CampaignController {
     ) {}
 
     @Get()
-    async all(@Query('page') page = 1) {
-        return this.campaignService.paginate(page);
+    async all() {
+        return this.campaignService.all();
     }
+    // async all(@Query('page') page = 1) {
+    //     return this.campaignService.paginate(page);
+    // }
 
     @Post()
     async create(

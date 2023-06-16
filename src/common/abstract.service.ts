@@ -10,8 +10,8 @@ export abstract class AbstractService {
    ) {}
 
 
-   all(relations = []): Promise<any[]> {
-        return this.repository.find({relations}); 
+   all(): Promise<any[]> {
+        return this.repository.find(); 
     }
 
     async paginate(page: number = 1): Promise<PaginatedResult> {

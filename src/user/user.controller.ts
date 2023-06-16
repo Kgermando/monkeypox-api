@@ -20,11 +20,14 @@ export class UserController {
 
 
     @Get()
-    async all(
-      @Query('page') page: number = 1
-    ) {
-      return await this.userService.paginate(page);
-    } 
+    async all() {
+      return this.userService.all();
+    }
+    // async all(
+    //   @Query('page') page: number = 1
+    // ) {
+    //   return await this.userService.paginate(page);
+    // } 
 
     @Post()
     async create(@Body() body: UserCreateDto): Promise<User> {

@@ -12,9 +12,12 @@ export class ZoneSanteController {
     ) {}
 
     @Get()
-    async all(@Query('page') page = 1) {
-        return this.zoneSanteService.paginate(page);
+    async all() {
+        return this.zoneSanteService.all();
     }
+    // async all(@Query('page') page = 1) {
+    //     return this.zoneSanteService.paginate(page);
+    // }
 
     @Post()
     async create(
