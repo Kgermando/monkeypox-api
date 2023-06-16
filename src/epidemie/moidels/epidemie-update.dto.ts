@@ -50,6 +50,8 @@ export class EpidemieUpdateDto {
     commentaire?: string;
  
     campaign?: string;
+
+    epidemie?: string;
   
     signature?: string; // celui qui fait le document
  

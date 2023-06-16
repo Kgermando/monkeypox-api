@@ -75,6 +75,9 @@ export class EpidemieCreateDto {
 
     @IsNotEmpty()
     campaign: string;
+
+    @IsNotEmpty()
+    epidemie: string;
  
     @IsNotEmpty()
     signature: string; // celui qui fait le document
