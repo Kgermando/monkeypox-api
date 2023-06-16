@@ -44,50 +44,13 @@ export class UserController {
   }
 
 
-  @Put('/info/:id')
-  async updateInfo(
-    @Param('id') id: number,
-    @Body() body: UserUpdateDto ) {
-    // const id = await this.authService.userId(jwt);
-
-    await this.userService.update(id, body); 
-    
-    return this.userService.findOne({where: {id}});
-  }
-
-
-  @Put('/password/:id')  
-  async updatePassword(
-    @Param('id') id: number,
-    @Body('password') password: string,
-    @Body('password_confirm') password_confirm: string,
-  ) {
-    if(password !== password_confirm) {
-      throw new BadRequestException("Mot de passe de correspond pas.");
-  }
-    // const id = await this.authService.userId(jwt);
-
-    const hashed = await bcrypt.hash(password, 12);
-
-    await this.userService.update(id, {
-      password: hashed
-    }); 
-    
-    return this.userService.findOne({where: {id}});
-  }
-
-
-
-
   @Put(':id')
   async update(
     @Param('id') id: number,
     @Body() body: UserUpdateDto
   ) { 
 
-    await this.userService.update(id, {
-      body, 
-    }); 
+    await this.userService.update(id, body); 
     return this.userService.findOne({where: {id}});
   }
 

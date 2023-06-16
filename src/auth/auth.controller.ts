@@ -1,4 +1,4 @@
-import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Get, NotFoundException, Param, Post, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
+import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Get, NotFoundException, Param, Post, Put, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './models/register.dto';
@@ -6,6 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Request, Response } from 'express'; 
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
+import { UserUpdateDto } from 'src/user/models/user-update.dto';
 
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('auth')
@@ -104,5 +105,41 @@ export class AuthController {
             message: 'Success!'
         }
     }
+
+
+    // Modifier les information uniquement
+    @Put('/info/:id')
+    async updateInfo(
+      @Param('id') id: number,
+      @Body() body: UserUpdateDto ) {
+      // const id = await this.authService.userId(jwt);
+  
+      await this.userService.update(id, body); 
+      
+      return this.userService.findOne({where: {id}});
+    }
+  
+
+
+    @Put('/password/:id')  
+    async updatePassword(
+      @Param('id') id: number,
+      @Body('password') password: string,
+      @Body('password_confirm') password_confirm: string,
+    ) {
+      if(password !== password_confirm) {
+        throw new BadRequestException("Mot de passe de correspond pas.");
+    }
+      // const id = await this.authService.userId(jwt);
+  
+      const hashed = await bcrypt.hash(password, 12);
+  
+      await this.userService.update(id, {
+        password: hashed
+      }); 
+      
+      return this.userService.findOne({where: {id}});
+    }
+  
  
 }
