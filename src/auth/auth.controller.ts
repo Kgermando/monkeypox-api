@@ -41,6 +41,7 @@ export class AuthController {
             email: body.email,
             telephone: body.telephone, 
             matricule: body.matricule,
+            role: body.role,
             password: hashed,
             signature: body.signature,
             created: body.created,

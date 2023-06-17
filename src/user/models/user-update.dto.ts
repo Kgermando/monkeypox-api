@@ -30,7 +30,9 @@ export class UserUpdateDto {
 
     telephone?: string; 
 
-    matricule?: string; 
+    matricule?: string;
+
+    role?: string;
     
     signature?: string; // celui qui fait le document
  

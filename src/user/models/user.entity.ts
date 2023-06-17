@@ -55,6 +55,9 @@ export class User {
     @Column({unique : true})
     matricule: string;
 
+    @Column({default: 'User'})
+    role: string;
+
     @Column()
     @Exclude()
     password: string;

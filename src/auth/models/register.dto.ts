@@ -51,6 +51,9 @@ export class RegisterDto {
     matricule: string;
 
     @IsNotEmpty()
+    role: string;
+
+    @IsNotEmpty()
     password: string;
 
     @IsNotEmpty()

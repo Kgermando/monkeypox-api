@@ -51,6 +51,9 @@ export class UserCreateDto {
     @IsNotEmpty()
     matricule: string;
 
+    @IsNotEmpty()
+    role: string;
+
     // @IsNotEmpty()
     // password: string;
 
