@@ -10,8 +10,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   // app.use(cookieParser());
   app.enableCors({
-    // origin: 'https://opca-monkeypox.web.app',
-    origin: 'http://localhost:4200',
+    origin: 'https://opca-monkeypox.web.app',
+    // origin: 'http://localhost:4200',
     credentials: true
   });
   const configService = app.get(ConfigService);
