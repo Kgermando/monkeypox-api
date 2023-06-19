@@ -5,13 +5,7 @@ export class PatientCreateDto {
     photo: string; 
 
     @IsNotEmpty()
-    nom: string;
-
-    @IsNotEmpty()
-    postnom: string;
-
-    @IsNotEmpty()
-    prenom: string;
+    fullname: string; 
 
     @IsNotEmpty()
     sexe: string;

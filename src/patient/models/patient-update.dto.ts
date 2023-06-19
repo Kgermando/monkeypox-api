@@ -1,10 +1,8 @@
 export class PatientUpdateDto {
     photo?: string;
 
-    postnom?: string;
-
-    prenom?: string;
-
+    fullname?: string; 
+    
     sexe?: string;
 
     age_an?: number;

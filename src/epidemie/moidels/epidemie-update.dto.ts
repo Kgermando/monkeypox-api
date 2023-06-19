@@ -15,9 +15,9 @@ export class EpidemieUpdateDto {
    
     patient_id?: number; 
     
-    fievre?: boolean;
+    fievre?: string;
  
-    eruption_cutanee?: boolean;
+    eruption_cutanee?: string;
  
     date_symptome?: Date;
  
@@ -29,11 +29,11 @@ export class EpidemieUpdateDto {
  
     structure?: string;  
  
-    a_ete_contact_patient?: boolean;  
+    a_ete_contact_patient?: string;  
  
     type_contact?: string;   
    
-    a_ete_hospitalise?: boolean; 
+    a_ete_hospitalise?: string; 
    
     croute?: string;
  

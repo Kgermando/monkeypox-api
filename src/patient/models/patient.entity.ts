@@ -9,13 +9,7 @@ export class Patient {
     photo: string;
 
     @Column()
-    nom: string;
-
-    @Column()
-    postnom: string;
-
-    @Column()
-    prenom: string;
+    fullname: string; 
 
     @Column()
     sexe: string;

@@ -23,10 +23,10 @@ export class EpidemieCreateDto {
     patient_id: number; 
 
     @IsNotEmpty()
-    fievre: boolean;
+    fievre: string;
 
     @IsNotEmpty()
-    eruption_cutanee: boolean;
+    eruption_cutanee: string;
 
     @IsNotEmpty()
     date_symptome: Date;
@@ -44,13 +44,13 @@ export class EpidemieCreateDto {
     structure: string;  
 
     @IsNotEmpty()
-    a_ete_contact_patient: boolean;  
+    a_ete_contact_patient: string;  
 
     @IsNotEmpty()
     type_contact: string;  
     
     @IsNotEmpty()
-    a_ete_hospitalise: boolean;
+    a_ete_hospitalise: string;
 
     @IsNotEmpty()
     croute: string;

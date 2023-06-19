@@ -27,10 +27,10 @@ export class Epidemie {
     patient_id: number; 
 
     @Column()
-    fievre: boolean;
+    fievre: string;
 
     @Column()
-    eruption_cutanee: boolean;
+    eruption_cutanee: string;
 
     @Column()
     date_symptome: Date;
@@ -48,13 +48,13 @@ export class Epidemie {
     structure: string; // Nom de la stucture Ex: ONG Ged
 
     @Column()
-    a_ete_contact_patient: boolean; // a ete en contact avec un patient
+    a_ete_contact_patient: string; // a ete en contact avec un patient
 
     @Column()
     type_contact: string;  
     
     @Column()
-    a_ete_hospitalise: boolean;
+    a_ete_hospitalise: string;
 
     @Column()
     croute: string;
@@ -80,7 +80,8 @@ export class Epidemie {
     @Column()
     campaign: string;
 
-    @Column({default: 'Monkeypox'})
+    // @Column({default: 'Monkeypox'})
+    @Column()
     epidemie: string;
  
     @Column()
