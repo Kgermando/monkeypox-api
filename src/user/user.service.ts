@@ -10,12 +10,8 @@ export class UserService extends AbstractService {
         @InjectRepository(User) private readonly  userRepository: Repository<User>
     ) {
         super(userRepository); 
-    }
-
-    all(): Promise<User[]> {
-        return this.userRepository.find(); 
-    }
-
+    } 
+    
     async paginate(page: number = 1): Promise<any> {
         const {data, meta} = await super.paginate(page);
         
