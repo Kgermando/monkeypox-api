@@ -34,7 +34,7 @@ const isProduction = process.env.NODE_ENV === "production";
         synchronize: true,
       }), 
       inject: [ConfigService],
-    }),
+    }), 
     CommonModule,
     UploadfileModule,
     AuthModule,

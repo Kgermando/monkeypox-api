@@ -11,4 +11,4 @@ export class PatientService extends AbstractService {
     ) {
         super(patientRepository); 
     }
-} 
+}
