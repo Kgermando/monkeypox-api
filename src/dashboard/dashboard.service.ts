@@ -100,15 +100,24 @@ export class DashboardService {
     async decesProvince () {
         return this.dataSource.query(`
             SELECT province, COUNT(province) 
-            FROM epidemie WHERE statut='Décès'  GROUP BY province;
+            FROM epidemie WHERE statut='Décès' GROUP BY province;
+        `);
+    }
+
+    
+    async statutEpidemiologique () {
+        return this.dataSource.query(`
+            SELECT EXTRACT(DAY FROM "created" ::TIMESTAMP) as day, statut,
+            count(statut)
+            FROM epidemie WHERE 
+            EXTRACT(MONTH FROM "created" ::TIMESTAMP) = EXTRACT(MONTH FROM CURRENT_DATE ::TIMESTAMP) AND
+            EXTRACT(YEAR FROM "created" ::TIMESTAMP) = EXTRACT(YEAR FROM CURRENT_DATE ::TIMESTAMP)
+            GROUP BY day, statut
+            ORDER BY day ASC; 
         `);
     }
 
     async decesAnnee () {
-        return this.dataSource.query("SELECT * FROM epidemie;");
-     }
-
-    async statutEpidemiologique () {
         return this.dataSource.query("SELECT * FROM epidemie;");
     }
 
