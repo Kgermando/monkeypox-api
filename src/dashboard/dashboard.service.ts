@@ -113,20 +113,33 @@ export class DashboardService {
             EXTRACT(MONTH FROM "created" ::TIMESTAMP) = EXTRACT(MONTH FROM CURRENT_DATE ::TIMESTAMP) AND
             EXTRACT(YEAR FROM "created" ::TIMESTAMP) = EXTRACT(YEAR FROM CURRENT_DATE ::TIMESTAMP)
             GROUP BY month, statut
-            ORDER BY month ASC; 
+            ORDER BY month ASC;
+        `);
+    }
+
+    async evolutionCas () {
+        return this.dataSource.query(`
+            SELECT EXTRACT(YEAR FROM "created" ::TIMESTAMP) as year, statut,
+            count(statut)
+            FROM epidemie WHERE  
+            EXTRACT(YEAR FROM "created" ::TIMESTAMP) = EXTRACT(YEAR FROM CURRENT_DATE ::TIMESTAMP)
+            GROUP BY year, statut
+            ORDER BY year ASC; 
         `);
     }
 
     async decesAnnee () {
-        return this.dataSource.query("SELECT * FROM epidemie;");
+        return this.dataSource.query(`
+            WITH resultat AS (SELECT COUNT(id) AS total FROM epidemie) 
+            SELECT TO_CHAR("created" :: DATE, 'Mon') as month, COUNT(statut)*100/total AS pourcentage FROM resultat, 
+            epidemie WHERE statut='Décès' AND
+            EXTRACT(MONTH FROM "created" ::TIMESTAMP) = EXTRACT(MONTH FROM CURRENT_DATE ::TIMESTAMP) AND
+            EXTRACT(YEAR FROM "created" ::TIMESTAMP) = EXTRACT(YEAR FROM CURRENT_DATE ::TIMESTAMP)
+            GROUP BY total, month; 
+        `);
     }
 
-    async evolutionCas () {
-        return this.dataSource.query("SELECT * FROM epidemie;");
-    }
-
-
  
- 
+
 }
  

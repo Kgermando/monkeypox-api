@@ -1,24 +1,24 @@
 version: '3'
 
 services:
-  monkeypox-api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: monkeypox-api
-    image: monkeypox-api
-    restart: unless-stopped
-    ports:
-      - "8080:8080" 
-    networks:
-      - app-network
-    volumes:
-      - ./monkeypox-api/:/app
-      - /app/node_modules
-    depends_on:
-      - db
-    env_file:
-      - .env
+  # monkeypox-api:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: monkeypox-api
+  #   image: monkeypox-api
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8080:8080" 
+  #   networks:
+  #     - app-network
+  #   volumes:
+  #     - ./monkeypox-api/:/app
+  #     - /app/node_modules
+  #   depends_on:
+  #     - db
+  #   env_file:
+  #     - .env
       
   db:
     restart: always
@@ -38,6 +38,7 @@ services:
       - 5432
     networks:
       - app-network
+
   
 
   # webserver:
@@ -82,6 +83,7 @@ services:
 volumes:
   postgres:
     driver: local
+  pgadmin-data:
   # certbot-etc:
   # certbot-var:
   # web-root:

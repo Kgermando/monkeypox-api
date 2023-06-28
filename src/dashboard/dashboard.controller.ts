@@ -88,16 +88,17 @@ export class DashboardController {
     async statutEpidemiologique() {
         return this.dashboardService.statutEpidemiologique();
     }
- 
-
-    @Get('deces-annee')
-    async decesAnnee() {
-        return this.dashboardService.decesAnnee();
-    } 
 
     @Get('evolution-cas')
     async evolutionCas() {
         return this.dashboardService.evolutionCas();
+    } 
+
+    @Get('deces-annee')
+    async decesAnnee() {
+        return this.dashboardService.decesAnnee();
     }
+
+
 
 }
