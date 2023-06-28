@@ -107,13 +107,13 @@ export class DashboardService {
     
     async statutEpidemiologique () {
         return this.dataSource.query(`
-            SELECT EXTRACT(DAY FROM "created" ::TIMESTAMP) as day, statut,
+            SELECT EXTRACT(MONTH FROM "created" ::TIMESTAMP) as month, statut,
             count(statut)
             FROM epidemie WHERE 
             EXTRACT(MONTH FROM "created" ::TIMESTAMP) = EXTRACT(MONTH FROM CURRENT_DATE ::TIMESTAMP) AND
             EXTRACT(YEAR FROM "created" ::TIMESTAMP) = EXTRACT(YEAR FROM CURRENT_DATE ::TIMESTAMP)
-            GROUP BY day, statut
-            ORDER BY day ASC; 
+            GROUP BY month, statut
+            ORDER BY month ASC; 
         `);
     }
 
